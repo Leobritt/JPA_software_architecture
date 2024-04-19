@@ -1,0 +1,17 @@
+server:
+   port: 8010
+   
+spring:
+  application:
+    name: autenticacao
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autenticacao.db
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver  
+
