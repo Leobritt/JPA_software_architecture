@@ -1,7 +1,7 @@
 package br.service;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
@@ -57,5 +57,25 @@ public class UsuarioService {
 
 	public List<Usuario> allUsers() {
 		return usuarioRepository.findAll();
+	}
+
+	public void delete(UUID id) {
+		pessoaRepository.deleteById(id);
+	}
+
+	public Usuario update(UUID id, UsuarioDTO dto) {
+		Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+		if (optionalUsuario.isPresent()) {
+			Usuario usuario = optionalUsuario.get();
+			usuario.setLogin(dto.login());
+			usuario.setEmail(dto.email());
+			usuario.setPassword(dto.password());
+			usuarioRepository.save(usuario);
+			return usuario;
+		} else {
+			System.out.println("Usuário não encontrado para o id: " + id);
+			throw new RuntimeException("Usuário não encontrado para o id: " + id);
+
+		}
 	}
 }
