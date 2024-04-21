@@ -17,26 +17,25 @@ import br.service.UsuarioService;
 
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UsuarioService service;
-	
+
 	@PostMapping("/add")
-	public String add(@RequestBody UsuarioDTO dto){
-		
+	public String add(@RequestBody UsuarioDTO dto) {
+
 		return service.add(dto);
 	}
-	
+
 	@GetMapping("/all")
-	public List <Pessoa> all(){
+	public List<Pessoa> all() {
 		return service.all();
 	}
-	
-	
+
 	@GetMapping("/test")
-	public String testaResultado(){
-		
-		return"resposta devolvida" ;
+	public String testaResultado() {
+
+		return "resposta devolvida";
 	}
 
 }
