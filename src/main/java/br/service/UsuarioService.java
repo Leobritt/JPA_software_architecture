@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 import br.dto.UsuarioDTO;
 import br.entity.Pessoa;
@@ -46,8 +47,15 @@ public class UsuarioService {
 
 	}
 
-	public List<Pessoa> all() {
+	public List<Pessoa> allPessoas() {
 		return pessoaRepository.findAll();
 	}
 
+	public Pessoa findPessoaById(UUID id) {
+		return pessoaRepository.findById(id).get();
+	}
+
+	public List<Usuario> allUsers() {
+		return usuarioRepository.findAll();
+	}
 }
